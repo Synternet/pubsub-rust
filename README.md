@@ -21,7 +21,7 @@ syntropy_pubsub = "0.1.0"
 ## Usage
 Here is a simple example demonstrating how to subscribe to a data stream and publish:
 
-#### Publish
+### Publish
 ```rust
 use bytes::Bytes;
 use std::time::Instant;
@@ -54,7 +54,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-####Subscribe
+### Subscribe
 ```rust
 use futures::stream::StreamExt;
 use std::time::Instant;
