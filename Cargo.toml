@@ -1,0 +1,18 @@
+[package]
+name = "pubsub-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-nats = "0.29.0"
+bytes = "1.4.0"
+chrono = "0.4.24"
+data-encoding = "2.4.0"
+futures = { version = "0.3.26", default-features = false, features = ["std", "async-await"] }
+nkeys = "0.3.0"
+rand = "0.8.5"
+serde = "1.0.163"
+serde_json = "1.0.96"
+tokio = { version = "1.25.0", features = ["macros", "rt-multi-thread", "fs", "net", "sync", "time", "io-util"] }
