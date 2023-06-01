@@ -68,7 +68,7 @@ fn sign_jwt(payload: &Payload, account: &nkeys::KeyPair) -> Result<String, Box<d
     Ok(format!("{}.{}", jwtbase, signature))
 }
 
-pub(crate) fn create_app_jwt(seed: &str) -> Result<String, Box<dyn std::error::Error>> {
+pub fn create_app_jwt(seed: &str) -> Result<String, Box<dyn std::error::Error>> {
     let account = nkeys::KeyPair::from_seed(seed)?;
 
     let acc_pub_key = account.public_key();

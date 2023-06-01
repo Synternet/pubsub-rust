@@ -3,7 +3,9 @@ name = "pubsub-rust"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "pubsub_rust"
+path = "src/pubsub.rs"
 
 [dependencies]
 async-nats = "0.29.0"
