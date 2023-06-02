@@ -7,15 +7,6 @@
 - Subscribe to existing data streams
 - Publish new data streams
 
-## Installation
-
-To add the library to your project, add the following to your `Cargo.toml`:
-
-```toml
-[dependencies]
-syntropy_pubsub = "0.1.0"
-```
-
 ## Usage
 Here is a simple example demonstrating how to subscribe to a data stream and publish:
 
