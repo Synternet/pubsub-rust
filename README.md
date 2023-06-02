@@ -1,13 +1,11 @@
 # Syntropy PubSub-Rust
 
-`syntropy_pubsub` is a Rust library for the Syntropy DataMesh project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy DataMesh platform.
+`pubsub-rust` is a Rust library for the Syntropy DataMesh project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy DataMesh platform.
 
 ## Features
 
 - Subscribe to existing data streams
 - Publish new data streams
-- Support for JSON messages
-- Customizable connection options
 
 ## Installation
 
@@ -21,29 +19,46 @@ syntropy_pubsub = "0.1.0"
 ## Usage
 Here is a simple example demonstrating how to subscribe to a data stream and publish:
 
+### The preferred method of authentication is using an access token from the developer portal.
+
+### cargo.toml
+```toml
+[package]
+name = "testrust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-nats = "0.29.0"
+tokio = { version = "1.25.0", features = ["full"] }
+pubsub-rust = { git = "https://github.com/SyntropyNet/pubsub-rust.git", branch = "main" }
+futures = { version = "0.3.26", default-features = false, features = ["std", "async-await"] }
+bytes = "1.4.0"
+```
+
 ### Publish
 ```rust
+extern crate pubsub_rust;
+
 use bytes::Bytes;
 use std::time::Instant;
 use tokio::time::{sleep, Duration};
-use std::io::{self, Write}; // Add this line
-
-mod pubsub;
+use std::io::{self, Write};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let seed = "SAAGNJOZTRPYYXG2NJX3ZNGXYUSDYX2BWO447W3SHG6XQ7U66RWHQ3JUXM";
+    let access_token = "SAAGNJOZTRPYYXG2NJX3ZNGXYUSDYX2BWO447W3SHG6XQ7U66RWHQ3JUXM";
     let nats_server_ip = "nats://127.0.0.1";
+    let subject = String::from("example.subject");
 
-    let client = pubsub::connect(nats_server_ip, seed).await?;
+    let client = pubsub_rust::connect(nats_server_ip, access_token).await?;
 
     let now = Instant::now();
-    let subject = String::from("foo");
-    let dat = Bytes::from("bar");
-    for _ in 0..100 { // Reduced the number of messages for testing
+    let data = Bytes::from("bar");
+    for _ in 0..100 {
         print!("publishing\n");
         io::stdout().flush().unwrap();
-        client.publish(subject.clone(), dat.clone()).await?;
+        client.publish(subject.clone(), data.clone()).await?;
         sleep(Duration::from_secs(1)).await;  // Wait for 1 second before the next publish
     }
     client.flush().await?;
@@ -56,24 +71,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ### Subscribe
 ```rust
-use futures::stream::StreamExt;
+extern crate pubsub_rust;
 use std::time::Instant;
-mod pubsub;
+use tokio;
 
 #[tokio::main]
-async fn main() -> Result<(), async_nats::Error> {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
-    let seed = "SAAGNJOZTRPYYXG2NJX3ZNGXYUSDYX2BWO447W3SHG6XQ7U66RWHQ3JUXM";
+    let access_token = "SAAGNJOZTRPYYXG2NJX3ZNGXYUSDYX2BWO447W3SHG6XQ7U66RWHQ3JUXM";
     let nats_server_ip = "nats://127.0.0.1";
+    let subscribe_subject = "example.subject";
 
-    let client = pubsub::connect(nats_server_ip, seed).await?;
+    let client = pubsub_rust::connect(nats_server_ip, access_token).await?;
 
     let now = Instant::now();
-    let mut subscriber = client.subscribe("foo".into()).await.unwrap();
+    let mut subscriber = client.subscribe(subscribe_subject.into()).await.unwrap();
 
     println!("Awaiting messages");
+    // Import StreamExt here:
+    use futures::stream::StreamExt;
     while let Some(message) = subscriber.next().await {
-        println!("Received message {message:?}");
+        println!("Received message {:?}", message);
     }
 
     println!("subscriber received in {:?}", now.elapsed());
