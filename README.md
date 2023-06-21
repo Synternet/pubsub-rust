@@ -1,6 +1,6 @@
 Welcome to the documentation for the Rust SDK for the Data Availability Layer! This SDK allows seamless integration with our Data Availability Layer solution, enabling you to leverage real-time data streams in your Rust applications. With the Rust SDK, you can unlock the power of the Data Availability Layer and harness real-time insights for your data-driven projects.
 
-[pubsub-rust](https://github.com/SyntropyNet/pubsub-rust) is a Rust library for the Syntropy DataMesh project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy DataMesh platform.
+[pubsub-rust](https://github.com/SyntropyNet/pubsub-rust) is a Rust library for the Syntropy Data Availability Layer project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy Data Availability Layer platform.
 
 # Features
 
@@ -20,20 +20,20 @@ syntropynet_pubsub = "0.1.0"
 
 # Getting Started
 
-Before you begin using the Rust SDK, make sure you have the necessary credentials and access tokens from the SyntropyNet platform. These credentials will allow you to connect to the Data Availability Layer and subscribe to or publish data streams.
+Before you begin using the Rust SDK, make sure you have the necessary credentials and access tokens from the Synropy Developer Portalplatform. These credentials will allow you to connect to the Data Availability Layer and subscribe to or publish data streams.
 
 ## Usage
 
 1. Import the SDK:
 
 ```rust
-use syntropynet_pubsub::DataMeshClient;
+use syntropynet_pubsub::Data Availability LayerClient;
 ```
 
 2. Initialize the client:
 
 ```rust
-let client = DataMeshClient::new("your-access-token", "your-private-key");
+let client = Data Availability LayerClient::new("your-access-token", "your-private-key");
 ```
 
 3. Subscribe to a Data Stream:
