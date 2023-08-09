@@ -1,17 +1,17 @@
-Welcome to the documentation for the Rust SDK for the Data Availability Layer! This SDK allows seamless integration with our Data Availability Layer solution, enabling you to leverage real-time data streams in your Rust applications. With the Rust SDK, you can unlock the power of the Data Availability Layer and harness real-time insights for your data-driven projects.
+Welcome to the documentation for the Rust SDK for the Data Layer! This SDK allows seamless integration with our Data Layer solution, enabling you to leverage real-time data streams in your Rust applications. With the Rust SDK, you can unlock the power of the Data Layer and harness real-time insights for your data-driven projects.
 
-[pubsub-rust](https://github.com/SyntropyNet/pubsub-rust) is a Rust library for the Syntropy Data Availability Layer project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy Data Availability Layer platform.
+[pubsub-rust](https://github.com/SyntropyNet/pubsub-rust) is a Rust library for the Syntropy Data Layer project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy Data Layer platform.
 
 # Features
 
-The Rust SDK for Data Availability Layer offers the following features:
+The Rust SDK for Data Layer offers the following features:
 
-- **Subscribe to Existing Data Streams**: Easily subscribe to pre-existing data streams within the Syntropy Data Availability Layer. Stay updated with real-time data insights and leverage them in your Rust applications.
-- **Publish New Data Streams**: Create and publish your own data streams directly from your Rust applications. Share data with other participants in the Data Availability Layer, enabling collaboration and innovation.
+- **Subscribe to Existing Data Streams**: Easily subscribe to pre-existing data streams within the Syntropy Data Layer. Stay updated with real-time data insights and leverage them in your Rust applications.
+- **Publish New Data Streams**: Create and publish your own data streams directly from your Rust applications. Share data with other participants in the Data Layer, enabling collaboration and innovation.
 
 # Installation
 
-To use the Rust SDK for Data Availability Layer in your project, add the following dependency to your `Cargo.toml` file:
+To use the Rust SDK for Data Layer in your project, add the following dependency to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
@@ -20,42 +20,7 @@ syntropynet_pubsub = "0.1.0"
 
 # Getting Started
 
-Before you begin using the Rust SDK, make sure you have the necessary credentials and access tokens from the Synropy Developer Portalplatform. These credentials will allow you to connect to the Data Availability Layer and subscribe to or publish data streams.
-
-## Usage
-
-1. Import the SDK:
-
-```rust
-use syntropynet_pubsub::Data Availability LayerClient;
-```
-
-2. Initialize the client:
-
-```rust
-let client = Data Availability LayerClient::new("your-access-token", "your-private-key");
-```
-
-3. Subscribe to a Data Stream:
-
-```rust
-let stream = client.subscribe("stream-name").await?;
-```
-
-4. Receive Data Stream Events:
-
-```rust
-while let Some(event) = stream.next().await {
-    // Handle the data stream event
-    println!("Received event: {:?}", event);
-}
-```
-
-5. Publish Data to a Stream:
-
-```rust
-client.publish("stream-name", b"Hello, Data Availability Layer!").await?;
-```
+Before you begin using the Rust SDK, make sure you have the necessary credentials and access tokens from the [Synropy Developer Portal](https://developer-portal.syntropynet.com/) platform. These credentials will allow you to connect to the Data Layer and subscribe to or publish data streams.
 
 ## Examples
 
@@ -91,7 +56,7 @@ use std::io::{self, Write};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let access_token = "SAAGNJOZTRPYYXG2NJX3ZNGXYUSDYX2BWO447W3SHG6XQ7U66RWHQ3JUXM";
+    let access_token = "EXAMPLE_ACCESS_TOKEN";
     let nats_server_ip = "nats://127.0.0.1";
     let subject = String::from("example.subject");
 
@@ -123,7 +88,7 @@ use tokio;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
-    let access_token = "SAAGNJOZTRPYYXG2NJX3ZNGXYUSDYX2BWO447W3SHG6XQ7U66RWHQ3JUXM";
+    let access_token = "EXAMPLE_ACCESS_TOKEN";
     let nats_server_ip = "nats://127.0.0.1";
     let subscribe_subject = "example.subject";
 
@@ -168,6 +133,6 @@ We appreciate your contributions and thank you for your support in making this p
 
 ## Support
 
-If you encounter any difficulties or have questions regarding the Rust SDK for Data Availability Layer, please reach out to our support team at support@syntropynet.com. We are here to assist you and ensure a smooth experience with our SDK.
+If you encounter any difficulties or have questions regarding the Rust SDK for Data Layer, please reach out to our support team at [Discord #developer-discussion](https://discord.com/channels/503896258881126401/1125658694399561738). We are here to assist you and ensure a smooth experience with our SDK.
 
-We hope this documentation provides you with a comprehensive understanding of the Rust SDK for the Data Availability Layer. Enjoy leveraging real-time data streams and unlocking the power of the Data Availability Layer in your Rust applications!
+We hope this documentation provides you with a comprehensive understanding of the Rust SDK for the Data Layer. Enjoy leveraging real-time data streams and unlocking the power of the Data Layer in your Rust applications!
