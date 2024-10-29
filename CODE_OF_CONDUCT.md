@@ -1,4 +1,4 @@
-# Code of Conduct - Syntropy PubSub Rust
+# Code of Conduct - Synternet PubSub Rust
 
 ## Our Pledge
 

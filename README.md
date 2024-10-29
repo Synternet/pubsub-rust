@@ -1,12 +1,12 @@
 Welcome to the documentation for the Rust SDK for the Data Layer! This SDK allows seamless integration with our Data Layer solution, enabling you to leverage real-time data streams in your Rust applications. With the Rust SDK, you can unlock the power of the Data Layer and harness real-time insights for your data-driven projects.
 
-[pubsub-rust](https://github.com/SyntropyNet/pubsub-rust) is a Rust library for the Syntropy Data Layer project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Syntropy Data Layer platform.
+[pubsub-rust](https://github.com/Synternet/pubsub-rust) is a Rust library for the Synternet Data Layer project that enables you to subscribe to existing data streams or publish new ones. This library is built on top of the NATS messaging system and provides a convenient way to integrate your Rust applications with the Synternet Data Layer platform.
 
 # Features
 
 The Rust SDK for Data Layer offers the following features:
 
-- **Subscribe to Existing Data Streams**: Easily subscribe to pre-existing data streams within the Syntropy Data Layer. Stay updated with real-time data insights and leverage them in your Rust applications.
+- **Subscribe to Existing Data Streams**: Easily subscribe to pre-existing data streams within the Synternet Data Layer. Stay updated with real-time data insights and leverage them in your Rust applications.
 - **Publish New Data Streams**: Create and publish your own data streams directly from your Rust applications. Share data with other participants in the Data Layer, enabling collaboration and innovation.
 
 # Installation
@@ -20,11 +20,11 @@ syntropynet_pubsub = "0.1.0"
 
 # Getting Started
 
-Before you begin using the Rust SDK, make sure you have the necessary credentials and access tokens from the [Synropy Developer Portal](https://developer-portal.syntropynet.com/) platform. These credentials will allow you to connect to the Data Layer and subscribe to or publish data streams.
+Before you begin using the Rust SDK, make sure you have the necessary credentials and access tokens from the [Synternet Developer Portal](https://portal.synternet.com/) platform. These credentials will allow you to connect to the Data Layer and subscribe to or publish data streams.
 
 ## Examples
 
-For detailed usage examples, please refer to the [examples directory](https://github.com/SyntropyNet/pubsub-rust/examples) in the repository. These examples cover various scenarios and demonstrate how to utilize the SDK's features effectively.
+For detailed usage examples, please refer to the [examples directory](https://github.com/Synternet/pubsub-rust/examples) in the repository. These examples cover various scenarios and demonstrate how to utilize the SDK's features effectively.
 
 The preferred method of authentication is using an access token from the developer portal.
 
@@ -39,7 +39,7 @@ edition = "2021"
 [dependencies]
 async-nats = "0.29.0"
 tokio = { version = "1.25.0", features = ["full"] }
-pubsub-rust = { git = "https://github.com/SyntropyNet/pubsub-rust.git", branch = "main" }
+pubsub-rust = { git = "https://github.com/Synternet/pubsub-rust.git", branch = "main" }
 futures = { version = "0.3.26", default-features = false, features = ["std", "async-await"] }
 bytes = "1.4.0"
 ```
@@ -110,11 +110,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-Those examples demonstrate how to connect to a NATS server, subscribe to a subject, and publish messages to subject using the Syntropy PubSub-Rust library.
+Those examples demonstrate how to connect to a NATS server, subscribe to a subject, and publish messages to subject using the Synternet PubSub-Rust library.
 
 ## Contributing
 
-We welcome contributions from the community! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/SyntropyNet/pubsub-rust). We appreciate your feedback and collaboration in making this SDK even better. 
+We welcome contributions from the community! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/Synternet/pubsub-rust). We appreciate your feedback and collaboration in making this SDK even better.
 
 ## Contribution Guidelines
 
