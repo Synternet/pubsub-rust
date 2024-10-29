@@ -15,7 +15,7 @@ To use the Rust SDK for Data Layer in your project, add the following dependency
 
 ```toml
 [dependencies]
-syntropynet_pubsub = "0.1.0"
+pubsub-rust = { git = "https://github.com/Synternet/pubsub-rust" }
 ```
 
 # Getting Started
@@ -24,91 +24,9 @@ Before you begin using the Rust SDK, make sure you have the necessary credential
 
 ## Examples
 
-For detailed usage examples, please refer to the [examples directory](https://github.com/Synternet/pubsub-rust/examples) in the repository. These examples cover various scenarios and demonstrate how to utilize the SDK's features effectively.
+For detailed usage examples, please refer to the [examples directory](https://github.com/Synternet/pubsub-rust/tree/main/examples) in the repository. These examples cover various scenarios and demonstrate how to utilize the SDK's features effectively.
 
 The preferred method of authentication is using an access token from the developer portal.
-
-### `cargo.toml`
-
-```Text TOML
-[package]
-name = "testrust"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-async-nats = "0.29.0"
-tokio = { version = "1.25.0", features = ["full"] }
-pubsub-rust = { git = "https://github.com/Synternet/pubsub-rust.git", branch = "main" }
-futures = { version = "0.3.26", default-features = false, features = ["std", "async-await"] }
-bytes = "1.4.0"
-```
-
-### Publish
-
-```Text Rust
-extern crate pubsub_rust;
-
-use bytes::Bytes;
-use std::time::Instant;
-use tokio::time::{sleep, Duration};
-use std::io::{self, Write};
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let access_token = "EXAMPLE_ACCESS_TOKEN";
-    let nats_server_ip = "nats://127.0.0.1";
-    let subject = String::from("example.subject");
-
-    let client = pubsub_rust::connect(nats_server_ip, access_token).await?;
-
-    let now = Instant::now();
-    let data = Bytes::from("bar");
-    for _ in 0..100 {
-        print!("publishing\n");
-        io::stdout().flush().unwrap();
-        client.publish(subject.clone(), data.clone()).await?;
-        sleep(Duration::from_secs(1)).await;  // Wait for 1 second before the next publish
-    }
-    client.flush().await?;
-
-    println!("published in {:?}", now.elapsed());
-
-    Ok(())
-}
-```
-
-### Subscribe
-
-```Text Rust
-extern crate pubsub_rust;
-use std::time::Instant;
-use tokio;
-
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-
-    let access_token = "EXAMPLE_ACCESS_TOKEN";
-    let nats_server_ip = "nats://127.0.0.1";
-    let subscribe_subject = "example.subject";
-
-    let client = pubsub_rust::connect(nats_server_ip, access_token).await?;
-
-    let now = Instant::now();
-    let mut subscriber = client.subscribe(subscribe_subject.into()).await.unwrap();
-
-    println!("Awaiting messages");
-    // Import StreamExt here:
-    use futures::stream::StreamExt;
-    while let Some(message) = subscriber.next().await {
-        println!("Received message {:?}", message);
-    }
-
-    println!("subscriber received in {:?}", now.elapsed());
-
-    Ok(())
-}
-```
 
 Those examples demonstrate how to connect to a NATS server, subscribe to a subject, and publish messages to subject using the Synternet PubSub-Rust library.
 
@@ -133,6 +51,6 @@ We appreciate your contributions and thank you for your support in making this p
 
 ## Support
 
-If you encounter any difficulties or have questions regarding the Rust SDK for Data Layer, please reach out to our support team at [Discord #developer-discussion](https://discord.com/channels/503896258881126401/1125658694399561738). We are here to assist you and ensure a smooth experience with our SDK.
+If you encounter any difficulties or have questions regarding the Rust SDK for Data Layer, please reach out to our support team at [Discord #developers-chat](https://discord.com/channels/503896258881126401/1125658694399561738). We are here to assist you and ensure a smooth experience with our SDK.
 
 We hope this documentation provides you with a comprehensive understanding of the Rust SDK for the Data Layer. Enjoy leveraging real-time data streams and unlocking the power of the Data Layer in your Rust applications!
